@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="cl.ipchile.mihuelladiaria" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Mi Huella Diaria</name>
+    <description>Registra tus hábitos sostenibles y estima tu huella de CO2 con factores referenciales chilenos.</description>
+    <author>Estudiante IPCHILE</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <preference name="Orientation" value="portrait" />
+    <platform name="android">
+        <preference name="android-minSdkVersion" value="24" />
+    </platform>
+</widget>

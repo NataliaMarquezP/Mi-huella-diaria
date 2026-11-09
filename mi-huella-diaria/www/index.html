@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Mi Huella Diaria</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <button id="btn-volver" class="volver oculto" aria-label="Volver">‹</button>
+    <h1 id="titulo">Mi Huella Diaria</h1>
+  </header>
+
+  <main>
+    <!-- INICIO -->
+    <section id="vista-inicio" class="vista activa">
+      <p id="saludo" class="intro">Registra tus hábitos y mira cuánto CO₂ generas.</p>
+      <div id="tarjeta-mes" class="tarjeta destacada"></div>
+      <div class="menu">
+        <button data-vista="vista-registro"><span>➕</span>Registrar</button>
+        <button data-vista="vista-resumen"><span>📊</span>Mi resumen</button>
+        <button data-vista="vista-insignias"><span>🏅</span>Insignias</button>
+        <button data-vista="vista-consejos"><span>💡</span>Consejos</button>
+        <button data-vista="vista-reciclaje"><span>♻️</span>Reciclaje</button>
+        <button data-vista="vista-recursos"><span>📚</span>Aprende</button>
+        <button data-vista="vista-perfil"><span>👤</span>Perfil y meta</button>
+        <button data-vista="vista-metodo"><span>🔎</span>¿Cómo calculamos?</button>
+      </div>
+    </section>
+
+    <!-- REGISTRO / CALCULADORA -->
+    <section id="vista-registro" class="vista" data-titulo="Registrar actividad">
+      <form id="form-registro" class="tarjeta">
+        <label>Fecha <input type="date" id="reg-fecha" required></label>
+        <label>Categoría
+          <select id="reg-categoria">
+            <option value="transporte">Transporte</option>
+            <option value="electricidad">Electricidad</option>
+            <option value="alimentacion">Alimentación</option>
+            <option value="reciclaje">Reciclaje</option>
+          </select>
+        </label>
+        <label>Tipo <select id="reg-tipo"></select></label>
+        <label><span id="reg-etiqueta-cantidad">Cantidad</span>
+          <input type="number" id="reg-cantidad" min="0" step="0.1" inputmode="decimal" required>
+        </label>
+        <div id="reg-checklist" class="checklist oculto"></div>
+        <p id="reg-preview" class="preview"></p>
+        <button type="submit">Guardar</button>
+        <p class="nota">Valores referenciales. Ver "¿Cómo calculamos?".</p>
+      </form>
+    </section>
+
+    <!-- RESUMEN -->
+    <section id="vista-resumen" class="vista" data-titulo="Mi resumen">
+      <div id="resumen-contenido"></div>
+      <h3>Últimas actividades</h3>
+      <ul id="lista-actividades" class="lista"></ul>
+      <div class="acciones">
+        <button id="btn-compartir" class="secundario">Compartir mi progreso</button>
+        <button id="btn-exportar" class="secundario">Exportar datos (JSON)</button>
+        <button id="btn-borrar" class="peligro">Borrar todos los datos</button>
+      </div>
+    </section>
+
+    <!-- INSIGNIAS -->
+    <section id="vista-insignias" class="vista" data-titulo="Insignias">
+      <ul id="lista-insignias" class="grilla"></ul>
+    </section>
+
+    <!-- CONSEJOS -->
+    <section id="vista-consejos" class="vista" data-titulo="Consejos">
+      <p id="consejos-nota" class="nota"></p>
+      <ul id="lista-consejos" class="lista-tarjetas"></ul>
+    </section>
+
+    <!-- RECICLAJE -->
+    <section id="vista-reciclaje" class="vista" data-titulo="Guía de reciclaje">
+      <p class="nota">Recomendaciones generales de preparación. Las reglas específicas pueden variar según la comuna.</p>
+      <ul id="lista-materiales" class="lista-tarjetas"></ul>
+    </section>
+
+    <!-- RECURSOS -->
+    <section id="vista-recursos" class="vista" data-titulo="Aprende">
+      <ul id="lista-recursos" class="lista-tarjetas"></ul>
+    </section>
+
+    <!-- PERFIL -->
+    <section id="vista-perfil" class="vista" data-titulo="Perfil y meta">
+      <form id="form-perfil" class="tarjeta">
+        <label>Nombre <input type="text" id="perfil-nombre" maxlength="40"></label>
+        <fieldset id="perfil-habitos">
+          <legend>Hábitos que quiero mejorar</legend>
+          <label class="check"><input type="checkbox" value="transporte"> Transporte</label>
+          <label class="check"><input type="checkbox" value="electricidad"> Electricidad</label>
+          <label class="check"><input type="checkbox" value="alimentacion"> Alimentación</label>
+          <label class="check"><input type="checkbox" value="reciclaje"> Reciclaje</label>
+        </fieldset>
+        <label>Límite mensual de CO₂ (kg)
+          <input type="number" id="perfil-meta" min="0" step="1" inputmode="decimal" placeholder="Ej: 100">
+        </label>
+        <p class="nota">La meta es no superar este límite de emisiones en el mes.</p>
+        <button type="submit">Guardar perfil</button>
+      </form>
+    </section>
+
+    <!-- METODOLOGÍA -->
+    <section id="vista-metodo" class="vista" data-titulo="¿Cómo calculamos?">
+      <div class="tarjeta">
+        <p><strong>Fórmula:</strong> cantidad × factor de emisión = kg de CO₂e.</p>
+        <p class="nota">Todos los valores son referenciales y pueden cambiar cada año.</p>
+      </div>
+      <ul id="lista-factores" class="lista-tarjetas"></ul>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="cordova.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

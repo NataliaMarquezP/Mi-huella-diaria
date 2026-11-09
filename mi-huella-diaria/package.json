@@ -1,0 +1,16 @@
+{
+  "name": "mi-huella-diaria",
+  "displayName": "Mi Huella Diaria",
+  "version": "1.0.0",
+  "description": "App móvil Apache Cordova para adoptar prácticas sostenibles (EPE II, IPCHILE)",
+  "private": true,
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {}
+  },
+  "devDependencies": {
+    "cordova-android": "^15.1.0"
+  }
+}
